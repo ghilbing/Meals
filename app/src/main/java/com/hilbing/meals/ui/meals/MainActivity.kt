@@ -31,19 +31,10 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MealsCategoriesScreen() {
     val viewModel: MealCategoriesViewModel = viewModel()
-    val rememberedMeals: MutableState<List<MealResponse>> = remember { mutableStateOf(emptyList<MealResponse>())}
-    val coroutineScope = rememberCoroutineScope()
-    LaunchedEffect(key1 = "GET_MEALS") { //special composable function that allows us to call thins only once
-        coroutineScope.launch(Dispatchers.IO) {
-            val meals = viewModel.getMeals()
-            rememberedMeals.value = meals
-        }
-    }
-
-
+    val meals = viewModel.mealsState.value
 
     LazyColumn{
-        items(rememberedMeals.value){
+        items(meals){
             meal ->
             Text(text = meal.name)
         }
