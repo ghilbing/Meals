@@ -9,7 +9,7 @@ import com.hilbing.meals.model.MealsRepository
 import com.hilbing.meals.model.response.MealResponse
 import kotlinx.coroutines.*
 
-class MealCategoriesViewModel (private val repository: MealsRepository = MealsRepository()): ViewModel(){
+class MealCategoriesViewModel (private val repository: MealsRepository = MealsRepository.getInstance()): ViewModel(){
 
     init {
 
